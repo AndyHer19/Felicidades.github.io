@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Cumpleaños, Ana Ruth!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;799&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #ff69b4; /* Rosa Cumpleaños */
+            --secondary-color: #8a2be2; /* Azul Violeta */
+            --tertiary-color: #ffd700; /* Oro */
+            --text-color: #333;
+            --light-text-color: #fff;
+            --card-bg-color: #ffe4e1; /* Rosa Pálido */
+            --card-hover-bg-color: #ffc0cb; /* Rosa Claro */
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce043, #fb7c7c); /* Degradado alegre */
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--tertiary-color);
+            border-radius: 50%;
+            opacity: 0;
+            animation: fall 5s infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotateZ(0deg); opacity: 1; }
+            100% { transform: translateY(calc(100vh + 100px)) rotateZ(720deg); opacity: 0; }
+        }
+
+        .confetti:nth-child(2n) { background-color: var(--primary-color); animation-delay: 0.5s; left: 10%; }
+        .confetti:nth-child(3n) { background-color: var(--secondary-color); animation-delay: 1s; left: 20%; }
+        .confetti:nth-child(4n) { background-color: var(--tertiary-color); animation-delay: 1.5s; left: 30%; }
+        .confetti:nth-child(5n) { background-color: var(--primary-color); animation-delay: 2s; left: 40%; }
+        .confetti:nth-child(6n) { background-color: var(--secondary-color); animation-delay: 2.5s; left: 50%; }
+        .confetti:nth-child(7n) { background-color: var(--tertiary-color); animation-delay: 3s; left: 60%; }
+        .confetti:nth-child(8n) { background-color: var(--primary-color); animation-delay: 3.5s; left: 70%; }
+        .confetti:nth-child(9n) { background-color: var(--secondary-color); animation-delay: 4s; left: 80%; }
+        .confetti:nth-child(10n) { background-color: var(--tertiary-color); animation-delay: 4.5s; left: 90%; }
+
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 2s ease-out;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 4em;
+            color: var(--primary-color);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            margin-bottom: 10px;
+            animation: bounceIn 1.5s ease-out;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: var(--secondary-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            perspective: 1000px; /* Para el efecto 3D */
+        }
+
+        .card {
+            width: 280px;
+            height: 380px;
+            background-color: var(--card-bg-color);
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.5s ease, background-color 0.3s ease;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        .card:hover {
+            transform: translateY(-15px) scale(1.03);
+            background-color: var(--card-hover-bg-color);
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-sizing: border-box;
+        }
+
+        .card-front {
+            background-color: var(--card-bg-color);
+            color: var(--text-color);
+            font-size: 1.8em;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .card-back {
+            background-color: var(--secondary-color);
+            color: var(--light-text-color);
+            transform: rotateY(180deg);
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .card-back p {
+            margin: 0;
+        }
+
+        .card-icon {
+            font-size: 4em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 40%, 60%, 80%, 100% {
+                animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            }
+            0% {
+                opacity: 0;
+                transform: scale3d(0.3, 0.3, 0.3);
+            }
+            20% {
+                transform: scale3d(1.1, 1.1, 1.1);
+            }
+            40% {
+                transform: scale3d(0.9, 0.9, 0.9);
+            }
+            60% {
+                opacity: 1;
+                transform: scale3d(1.03, 1.03, 1.03);
+            }
+            80% {
+                transform: scale3d(0.97, 0.97, 0.97);
+            }
+            100% {
+                opacity: 1;
+                transform: scale3d(1, 1, 1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            .card-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+                max-width: 300px; /* Asegura que no sean demasiado anchas en pantallas pequeñas */
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            h2 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="confetti" style="left: 5%;"></div>
+    <div class="confetti" style="left: 15%; animation-delay: 0.8s; background-color: var(--primary-color);"></div>
+    <div class="confetti" style="left: 25%; animation-delay: 1.6s; background-color: var(--secondary-color);"></div>
+    <div class="confetti" style="left: 35%; animation-delay: 2.4s;"></div>
+    <div class="confetti" style="left: 45%; animation-delay: 3.2s; background-color: var(--primary-color);"></div>
+    <div class="confetti" style="left: 55%; animation-delay: 4s; background-color: var(--secondary-color);"></div>
+    <div class="confetti" style="left: 65%; animation-delay: 4.8s;"></div>
+    <div class="confetti" style="left: 75%; animation-delay: 5.6s; background-color: var(--primary-color);"></div>
+    <div class="confetti" style="left: 85%; animation-delay: 6.4s; background-color: var(--secondary-color);"></div>
+    <div class="confetti" style="left: 95%; animation-delay: 7.2s;"></div>
+
+
+    <header>
+        <h1>¡Feliz Cumpleaños, Ana Ruth!</h1>
+        <h2>¡Celebrando tus 19 años!</h2>
+    </header>
+
+    <div class="card-container">
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <span class="card-icon">🎂</span>
+                ¡Ábreme!
+            </div>
+            <div class="card-back">
+                <p>¡Ana Ruth, en este día tan especial, te deseo un cumpleaños lleno de alegría, risas y momentos inolvidables! Que cada deseo se haga realidad.</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <span class="card-icon">🎉</span>
+                Un deseo para ti
+            </div>
+            <div class="card-back">
+                <p>Que estos 19 años marquen el inicio de una etapa maravillosa, llena de éxitos, nuevas aventuras y muchísima felicidad. ¡Sigue brillando!</p>
+            </div>
+        </div>
+
+        <div class="card" onclick="this.classList.toggle('flipped')">
+            <div class="card-front">
+                <span class="card-icon">💖</span>
+                Con mucho cariño
+            </div>
+            <div class="card-back">
+                <p>Recuerda lo especial que eres para todos nosotros. Gracias por tu alegría y tu compañía. ¡Te queremos mucho, feliz cumpleaños!</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
